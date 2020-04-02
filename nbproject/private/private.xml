@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/in/objectclasses/in_product_findcls.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/utils/browsecontroller.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/in/component/Frmin_goods_receipt.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/component/Frmar_pos_option.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/common/component/FrmMainFrame.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/Reports/RMKK-15.jrxml</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/Reports/RTSC-01-01.jrxml</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/objectclasses/report_filesext.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/Server.txt</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/utils/popmenucontroller.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/common/component/FrmLogin.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/objectclasses/report_filescls.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/objectclasses/report_categorycls.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/component/Frmar_sales_order.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/component/frmar_pos_sales_payment.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/component/Frmreport_files.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/component/FrmRTPS03.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/component/Frmar_sales_delivery.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/component/Frmar_pos_sales.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/objectclasses/ar_sales_delivery_detail1extcol.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/objectclasses/ar_sales_delivery_detail1ext.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ap/component/Frmrp_purchase_receive.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ap/component/Frmap_purchase_receive.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/in/component/Frmrp_product.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/component/FrmReportSelector.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/common/component/FrmBrowseData.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/in/component/Frmin_product.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/Reports/purchasereceive_rkp_rpt.jrxml</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/common/objectclasses/extended/Mastercompanycols.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/in/component/Frmin_goods_issue.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/objectclasses/report_categoryext.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/component/Frmreport_category.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/in/component/Frmin_so_entry.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/objectclasses/report_filesextcol.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/ar/component/FrmRTSC0101.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/report_files/objectclasses/report_categoryextcol.java</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/Reports/FTPS-03-01.jrxml</file>
+            <file>file:/home/aryadanaraya/svn/trunk/KOPKAR/src/kopkar/in/component/Frmin_product_price_info.java</file>
+        </group>
+    </open-files>
+</project-private>

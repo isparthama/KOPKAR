@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Struk" language="groovy" pageWidth="300" pageHeight="380" columnWidth="280" leftMargin="20" rightMargin="0" topMargin="11" bottomMargin="11">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="45"/>
+	<parameter name="yop" class="java.lang.String"/>
+	<parameter name="mop" class="java.lang.String"/>
+	<parameter name="department_code_fr" class="java.lang.String"/>
+	<parameter name="department_code_to" class="java.lang.String"/>
+	<parameter name="member_number_fr" class="java.lang.String"/>
+	<parameter name="member_number_to" class="java.lang.String"/>
+	<parameter name="audituser" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[call sp_ko_transaksi_invoice_detail_get_form($P{yop},$P{mop},$P{department_code_fr},$P{department_code_to},
+$P{member_number_fr},$P{member_number_to},$P{audituser})]]>
+	</queryString>
+	<field name="yop" class="java.lang.Integer"/>
+	<field name="mop" class="java.lang.Integer"/>
+	<field name="member_number" class="java.lang.String"/>
+	<field name="member_name" class="java.lang.String"/>
+	<field name="doctype" class="java.lang.Integer"/>
+	<field name="trx" class="java.lang.String"/>
+	<field name="document_number" class="java.lang.String"/>
+	<field name="nilFaktur" class="java.math.BigDecimal"/>
+	<field name="jumlah_bayar" class="java.math.BigDecimal"/>
+	<field name="sisaFaktur" class="java.math.BigDecimal"/>
+	<field name="reference_number" class="java.lang.String"/>
+	<field name="department_code" class="java.lang.String"/>
+	<field name="nama_departemen" class="java.lang.String"/>
+	<field name="txtdocname" class="java.lang.String"/>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="addressQ" class="java.lang.String"/>
+	<field name="cityQ" class="java.lang.String"/>
+	<field name="phoneQ" class="java.lang.String"/>
+	<field name="txtHeader" class="java.lang.String"/>
+	<field name="txtType" class="java.lang.String"/>
+	<field name="ttd" class="java.lang.String"/>
+	<sortField name="department_code"/>
+	<sortField name="member_number"/>
+	<sortField name="doctype"/>
+	<sortField name="document_number"/>
+	<variable name="nilbon" class="java.lang.Double" resetType="Group" resetGroup="member_number" calculation="Sum">
+		<variableExpression><![CDATA[$F{nilFaktur}]]></variableExpression>
+	</variable>
+	<variable name="byrbon" class="java.lang.Double" resetType="Group" resetGroup="member_number" calculation="Sum">
+		<variableExpression><![CDATA[$F{jumlah_bayar}]]></variableExpression>
+	</variable>
+	<variable name="sisabon" class="java.lang.Double" resetType="Group" resetGroup="member_number" calculation="Sum">
+		<variableExpression><![CDATA[$F{sisaFaktur}]]></variableExpression>
+	</variable>
+	<group name="kode_departemen">
+		<groupExpression><![CDATA[$F{department_code}]]></groupExpression>
+	</group>
+	<group name="member_number" isStartNewPage="true" footerPosition="StackAtBottom">
+		<groupExpression><![CDATA[$F{member_number}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="112">
+				<textField pattern="#,##0">
+					<reportElement x="221" y="0" width="47" height="10"/>
+					<box>
+						<topPen lineWidth="0.75" lineColor="#999999"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sisabon}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="member_number" pattern="#,##0">
+					<reportElement x="116" y="0" width="50" height="10"/>
+					<box>
+						<topPen lineWidth="0.75" lineColor="#999999"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{nilbon}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement x="169" y="0" width="47" height="10"/>
+					<box>
+						<topPen lineWidth="0.75" lineColor="#999999"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{byrbon}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="55" height="10" backcolor="#999999"/>
+					<box>
+						<topPen lineWidth="0.75" lineColor="#999999"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Total Tagihan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="58" y="0" width="55" height="10" backcolor="#999999"/>
+					<box>
+						<topPen lineWidth="0.75" lineColor="#999999"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="67" width="268" height="10" backcolor="#999999"/>
+					<textElement textAlignment="Center">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[" Simpan Struk Ini "]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="87" width="268" height="10" backcolor="#999999"/>
+					<textElement textAlignment="Center">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Pengurus]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="77" width="268" height="10"/>
+					<textElement textAlignment="Center">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{ttd}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="210" y="97" width="58" height="10"/>
+					<textElement textAlignment="Right">
+						<font size="6"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{txtdocname}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement x="78" y="74" width="58" height="10" backcolor="#999999"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Nama : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="34" width="268" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{addressQ}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="78" y="65" width="58" height="10" backcolor="#999999"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[No.Anggota : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="83" width="58" height="10" backcolor="#999999"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Departemen : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="52" width="268" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="43" width="268" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cityQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="24" width="268" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="65" width="75" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{member_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="75" width="75" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{member_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="83" width="75" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_departemen}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="97" width="55" height="10" backcolor="#999999"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#999999"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[No.Bon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="97" width="55" height="10" backcolor="#999999"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#999999"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Bon.Tagihan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="97" width="50" height="10" backcolor="#999999"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#999999"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Nilai.Bon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="97" width="47" height="10" backcolor="#999999"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#999999"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Nil.Bayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="97" width="47" height="10" backcolor="#999999"/>
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#999999"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Sisa.Bon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="268" height="24" backcolor="#999999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[** BON BUKTI PEMOTONGAN GAJI **]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="10" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="58" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{document_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="0" width="58" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{trx}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="116" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{nilFaktur}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="166" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{jumlah_bayar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="216" y="0" width="52" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{sisaFaktur}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="11" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

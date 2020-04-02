@@ -1,0 +1,10 @@
+CREATE PROCEDURE sp_template_delete (in
+	<FIELD_LIST>
+	sFIELD_NAME FIELD_TYPE,
+        <FIELD_LIST_END>
+	)
+BEGIN
+            delete from template
+            where KEY=sKEY;
+
+END

@@ -1,0 +1,14 @@
+CREATE PROCEDURE sp_template_update (in
+	<FIELD_LIST>
+	sFIELD_NAME FIELD_TYPE,
+        <FIELD_LIST_END>
+	)
+BEGIN
+    update template
+    set
+    auditdate=now(),
+    <FIELD_LIST>
+    FIELD_NAME=sFIELD_NAME,
+    <FIELD_LIST_END>
+    where KEY=sKEY;
+END

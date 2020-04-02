@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RMKK-01" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="brand_code_fr" class="java.lang.String"/>
+	<parameter name="brand_code_to" class="java.lang.String"/>
+	<parameter name="product_code_fr" class="java.lang.String"/>
+	<parameter name="product_code_to" class="java.lang.String"/>
+	<parameter name="active_sts" class="java.lang.String"/>
+	<parameter name="audituser" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[CALL sp_in_product_inventory_rpt($P{brand_code_fr},$P{brand_code_to}, $P{product_code_fr},$P{product_code_to},$P{active_sts});]]>
+	</queryString>
+	<field name="txtdocname" class="java.lang.String"/>
+	<field name="product_code" class="java.lang.String"/>
+	<field name="product_name" class="java.lang.String"/>
+	<field name="warehouse_code" class="java.lang.String"/>
+	<field name="onhand" class="java.lang.Double"/>
+	<field name="comitted" class="java.lang.Double"/>
+	<field name="consign" class="java.lang.Double"/>
+	<field name="isorder" class="java.lang.Double"/>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="addressQ" class="java.lang.String"/>
+	<field name="cityQ" class="java.lang.String"/>
+	<field name="phoneQ" class="java.lang.String"/>
+	<field name="txtHeader" class="java.lang.String"/>
+	<field name="txtType" class="java.lang.String"/>
+	<field name="txtFilter" class="java.lang.String"/>
+	<field name="brand_name" class="java.lang.String"/>
+	<field name="brand_code" class="java.lang.String"/>
+	<field name="product_short_name" class="java.lang.String"/>
+	<field name="warehouse_name" class="java.lang.String"/>
+	<variable name="noq" class="java.lang.Number" resetType="Group" resetGroup="brand" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{product_code}]]></variableExpression>
+	</variable>
+	<variable name="pencetak" class="java.lang.String">
+		<variableExpression><![CDATA["User : "+$P{audituser}]]></variableExpression>
+	</variable>
+	<group name="brand">
+		<groupExpression><![CDATA[$F{brand_code}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<staticText>
+					<reportElement x="0" y="0" width="95" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Brand]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="95" y="0" width="460" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{brand_name}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="5">
+				<staticText>
+					<reportElement x="0" y="0" width="556" height="5"/>
+					<box>
+						<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					</box>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="produk">
+		<groupExpression><![CDATA[$F{product_code}]]></groupExpression>
+		<groupFooter>
+			<band height="5"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="72" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="280" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Courier New" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="19" width="280" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{addressQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="33" width="280" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cityQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="47" width="280" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneQ}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="316" y="0" width="239" height="33"/>
+				<box>
+					<pen lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtHeader}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="32" width="239" height="15"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="316" y="46" width="239" height="15"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtFilter}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="25" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="0" width="70" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Kd.Produk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="159" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Produk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="0" width="115" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Gudang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="38" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Cmtd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="0" width="38" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[OnHand]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="0" width="38" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[isOdr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="0" width="38" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Cnsgn]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="518" y="0" width="38" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{isorder}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="95" y="0" width="159" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement isPrintRepeatedValues="false" x="0" y="0" width="25" height="15" printWhenGroupChanges="brand"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Number"><![CDATA[$V{noq}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="25" y="0" width="70" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_code}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="407" y="0" width="38" height="15" printWhenGroupChanges="kode_harga"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{onhand}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="445" y="0" width="38" height="15" printWhenGroupChanges="kode_harga"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{comitted}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="483" y="0" width="36" height="15" printWhenGroupChanges="kode_harga"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{consign}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="436" y="5" width="80" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="516" y="5" width="40" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="275" y="5" width="161" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="205" y="5" width="70" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Tgl. Cetak :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="5" width="205" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{pencetak}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="436" y="20" width="119" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtdocname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

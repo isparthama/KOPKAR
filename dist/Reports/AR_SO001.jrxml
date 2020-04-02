@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AR_SO001" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="document_date_fr" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT b.customer_name,a.* FROM ar_sales_order a inner join ar_customer b on a.customer_code=b.customer_code]]>
+	</queryString>
+	<field name="customer_name" class="java.lang.String"/>
+	<field name="docentry" class="java.lang.Integer"/>
+	<field name="document_number" class="java.lang.String"/>
+	<field name="document_status" class="java.lang.String"/>
+	<field name="complete_status" class="java.lang.String"/>
+	<field name="document_date" class="java.sql.Timestamp"/>
+	<field name="document_duedate" class="java.sql.Timestamp"/>
+	<field name="customer_code" class="java.lang.String"/>
+	<field name="reference_number" class="java.lang.String"/>
+	<field name="term_code" class="java.lang.String"/>
+	<field name="discount_code" class="java.lang.String"/>
+	<field name="price_code" class="java.lang.String"/>
+	<field name="warehouse_code" class="java.lang.String"/>
+	<field name="salesman_code" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="dscription" class="java.lang.String"/>
+	<field name="include_tax" class="java.lang.String"/>
+	<field name="tax_percent" class="java.math.BigDecimal"/>
+	<field name="total_bfr_discount" class="java.lang.Double"/>
+	<field name="total_discount" class="java.lang.Double"/>
+	<field name="total_aft_discount" class="java.lang.Double"/>
+	<field name="tax_amount" class="java.lang.Double"/>
+	<field name="total_aft_tax" class="java.lang.Double"/>
+	<field name="entrydate" class="java.sql.Timestamp"/>
+	<field name="auditdate" class="java.sql.Timestamp"/>
+	<field name="objtype" class="java.lang.Integer"/>
+	<field name="audituser" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="203" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN SALES ORDER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="203" height="20"/>
+				<textElement/>
+				<text><![CDATA[Periode : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="99" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{document_date_fr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[No. Sales Order]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Tanggal Sales Order]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kode Pelanggan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Total Sales Order]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="0" width="149" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama Pelanggan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{document_number}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="103" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{document_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="203" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{customer_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{total_bfr_discount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="0" width="148" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{customer_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

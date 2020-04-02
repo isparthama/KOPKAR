@@ -1,0 +1,23 @@
+CREATE PROCEDURE sp_template_insert (in
+        <FIELD_LIST>
+	sFIELD_NAME FIELD_TYPE,
+        <FIELD_LIST_END>
+	)
+BEGIN
+            insert into template
+            (
+            entrydate,
+            auditdate,
+            <FIELD_LIST>
+            FIELD_NAME,
+            <FIELD_LIST_END>
+            )
+            values
+            (
+            now(),
+            now(),
+            <FIELD_LIST>
+            sFIELD_NAME,
+            <FIELD_LIST_END>
+            );            
+END

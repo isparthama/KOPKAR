@@ -1,0 +1,8 @@
+//server=10.11.3.141
+server=localhost
+//server=192.168.0.2
+database=common_kopkar
+username=root
+password=
+counter=001
+indevelopment=false

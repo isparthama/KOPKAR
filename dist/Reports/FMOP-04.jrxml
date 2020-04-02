@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FMOP-04" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="296"/>
+	<parameter name="scompanyid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[CALL sp_ko_option_rpt($P{scompanyid})]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="company_id" class="java.lang.String"/>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="active_sts" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="zipcode" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="faximale" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="pic" class="java.lang.String"/>
+	<field name="register_date" class="java.sql.Timestamp"/>
+	<field name="simpanan_wajib" class="java.math.BigDecimal"/>
+	<field name="simpanan_pokok" class="java.math.BigDecimal"/>
+	<field name="simpanan_sukarela" class="java.math.BigDecimal"/>
+	<field name="simpanan_khusus" class="java.math.BigDecimal"/>
+	<field name="term_code" class="java.lang.String"/>
+	<field name="monthly_no" class="java.lang.Integer"/>
+	<field name="entrydate" class="java.sql.Timestamp"/>
+	<field name="auditdate" class="java.sql.Timestamp"/>
+	<field name="audituser" class="java.lang.String"/>
+	<field name="simpanan_wajib_kode_akun" class="java.lang.String"/>
+	<field name="simpanan_pokok_kode_akun" class="java.lang.String"/>
+	<field name="simpanan_sukarela_kode_akun" class="java.lang.String"/>
+	<field name="simpanan_khusus_kode_akun" class="java.lang.String"/>
+	<field name="tunai_kode_akun" class="java.lang.String"/>
+	<field name="transfer_kode_akun" class="java.lang.String"/>
+	<field name="tunai_penampung_kode_akun" class="java.lang.String"/>
+	<field name="transfer_penampung_kode_akun" class="java.lang.String"/>
+	<field name="cut_off_day" class="java.lang.Integer"/>
+	<field name="update_option_info" class="java.lang.String"/>
+	<field name="simpanan_wajib_akun_desc" class="java.lang.String"/>
+	<field name="simpanan_pokok_akun_desc" class="java.lang.String"/>
+	<field name="simpanan_sukarela_akun_desc" class="java.lang.String"/>
+	<field name="simpanan_khusus_akun_desc" class="java.lang.String"/>
+	<field name="tunai_akun_desc" class="java.lang.String"/>
+	<field name="transfer_akun_desc" class="java.lang.String"/>
+	<field name="tunai_penampung_akun_desc" class="java.lang.String"/>
+	<field name="transfer_penampung_akun_desc" class="java.lang.String"/>
+	<field name="term_desc" class="java.lang.String"/>
+	<field name="txtdocname" class="java.lang.String"/>
+	<field name="addressQ" class="java.lang.String"/>
+	<field name="cityQ" class="java.lang.String"/>
+	<field name="phoneQ" class="java.lang.String"/>
+	<field name="txtHeader" class="java.lang.String"/>
+	<field name="txtType" class="java.lang.String"/>
+	<sortField name="company_id"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="579" splitType="Stretch">
+			<staticText>
+				<reportElement x="21" y="82" width="110" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Kode Instansi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="94" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Nama Instansi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="132" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="144" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="156" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Kota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="168" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Kode Pos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="156" width="62" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Propinsi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="216" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Tanggal Registrasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="204" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Pic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="180" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Telephon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="192" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="180" width="62" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Fax]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="20" width="270" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{addressQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="34" width="270" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cityQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="48" width="270" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneQ}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="1" width="238" height="20"/>
+				<box>
+					<pen lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtHeader}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="1" width="270" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="133" y="82" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="94" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="132" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="156" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="156" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="168" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="180" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="180" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="192" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="204" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="216" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="82" width="200" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_id}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="94" width="200" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="132" width="398" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="144" width="398" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="156" width="123" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="431" y="156" width="115" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="168" width="123" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{zipcode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="180" width="123" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="431" y="180" width="115" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{faximale}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="192" width="200" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="204" width="200" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pic}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH.mm.ss" isBlankWhenNull="true">
+				<reportElement x="148" y="216" width="200" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{register_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="70" width="127" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="239" width="122" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SET DEFAULT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="281" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="418" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Khusus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="257" width="110" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Jangka Waktu Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="394" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="379" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="281" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="406" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="394" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="433" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Bayar Tunai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="326" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="257" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="445" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="341" width="110" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Update All Option]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="293" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Sukarela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="379" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Wajib]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="293" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="305" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Khusus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="445" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Bayar Transfer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="269" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="269" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Wajib]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="418" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="341" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="406" width="110" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Simpanan Sukarela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="433" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="326" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Tgl Cut Off Trs POS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="305" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="117" width="122" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UTAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="361" width="122" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MASTER AKUN]]></text>
+			</staticText>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="148" y="269" width="85" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{simpanan_wajib}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="148" y="281" width="85" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{simpanan_pokok}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="148" y="293" width="85" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{simpanan_sukarela}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="148" y="305" width="85" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{simpanan_khusus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="326" width="100" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{cut_off_day}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="341" width="100" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{update_option_info}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="379" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_wajib_kode_akun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="391" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_pokok_kode_akun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="406" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_sukarela_kode_akun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="418" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_khusus_kode_akun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="433" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tunai_kode_akun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="445" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{transfer_kode_akun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="379" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_wajib_akun_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="391" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_pokok_akun_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="403" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_sukarela_akun_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="418" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{simpanan_khusus_akun_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="433" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tunai_akun_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="445" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{transfer_akun_desc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="502" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Bayar Transfer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="469" width="122" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AKUNN PENAMPUNGAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="487" width="110" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Bayar Tunai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="487" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="502" width="10" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="245" y="490" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tunai_penampung_akun_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="508" width="156" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{transfer_penampung_akun_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="487" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tunai_kode_akun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="502" width="85" height="12"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{transfer_kode_akun}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="458" y="3" width="90" height="15"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtdocname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

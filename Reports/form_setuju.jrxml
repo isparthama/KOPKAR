@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="form_permohonan" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="241"/>
+	<parameter name="document_date_fr" class="java.lang.String"/>
+	<parameter name="document_date_to" class="java.lang.String"/>
+	<parameter name="document_number_fr" class="java.lang.String"/>
+	<parameter name="document_number_to" class="java.lang.String"/>
+	<parameter name="audituser" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[call sp_ko_transaksi_setuju_form($P{document_date_fr},$P{document_date_to},$P{document_number_fr},$P{document_number_to},$P{audituser})]]>
+	</queryString>
+	<field name="txtperiode_pot" class="java.lang.Object"/>
+	<field name="docentry" class="java.lang.Integer"/>
+	<field name="document_number" class="java.lang.String"/>
+	<field name="document_status" class="java.lang.String"/>
+	<field name="complete_status" class="java.lang.String"/>
+	<field name="document_date" class="java.sql.Timestamp"/>
+	<field name="yop" class="java.lang.Integer"/>
+	<field name="mop" class="java.lang.Integer"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="dscription" class="java.lang.String"/>
+	<field name="member_number" class="java.lang.String"/>
+	<field name="reference_number" class="java.lang.String"/>
+	<field name="last_payment_number" class="java.lang.String"/>
+	<field name="masa_kerja" class="java.lang.String"/>
+	<field name="kode_pinjaman" class="java.lang.String"/>
+	<field name="jumlah_pinjaman" class="java.math.BigDecimal"/>
+	<field name="jumlah_bunga" class="java.math.BigDecimal"/>
+	<field name="jumlah_pokok_bunga" class="java.math.BigDecimal"/>
+	<field name="suku_bunga" class="java.math.BigDecimal"/>
+	<field name="hitung_bunga" class="java.lang.String"/>
+	<field name="jangka_waktu" class="java.lang.Integer"/>
+	<field name="satuan_waktu" class="java.lang.String"/>
+	<field name="jumlah_angsuran" class="java.math.BigDecimal"/>
+	<field name="yop_start" class="java.lang.Integer"/>
+	<field name="mop_start" class="java.lang.Integer"/>
+	<field name="auto_sts" class="java.lang.String"/>
+	<field name="angsuranke" class="java.lang.Integer"/>
+	<field name="sisa_angsuranke" class="java.lang.Integer"/>
+	<field name="total_angsuran" class="java.math.BigDecimal"/>
+	<field name="total_pokok" class="java.math.BigDecimal"/>
+	<field name="total_bunga" class="java.math.BigDecimal"/>
+	<field name="total_potongan" class="java.math.BigDecimal"/>
+	<field name="total_pokok_bunga_akhir" class="java.math.BigDecimal"/>
+	<field name="total_pokok_akhir" class="java.math.BigDecimal"/>
+	<field name="total_bunga_akhir" class="java.math.BigDecimal"/>
+	<field name="angsur_sts" class="java.lang.String"/>
+	<field name="entrydate" class="java.sql.Timestamp"/>
+	<field name="auditdate" class="java.sql.Timestamp"/>
+	<field name="audituser" class="java.lang.String"/>
+	<field name="nama_pinjaman" class="java.lang.String"/>
+	<field name="member_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="employee_number" class="java.lang.String"/>
+	<field name="nama_departemen" class="java.lang.String"/>
+	<field name="nama_jabatan" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="sts_pegawai" class="java.lang.String"/>
+	<field name="hitung_bunga_desc" class="java.lang.String"/>
+	<field name="txttertanda" class="java.lang.String"/>
+	<field name="satuan_waktu_desc" class="java.lang.String"/>
+	<field name="reference_number_desc" class="java.lang.String"/>
+	<variable name="txttertanda" class="java.lang.String"/>
+	<group name="document_number" footerPosition="StackAtBottom">
+		<groupExpression><![CDATA[$F{document_number}]]></groupExpression>
+		<groupFooter>
+			<band height="231">
+				<staticText>
+					<reportElement x="31" y="10" width="524" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="false" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Demikian Permohonan ini saya buat dengan sebenar-benarnya]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="31" y="58" width="233" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="false" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Hormat Saya,]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="30" y="96" width="233" height="17"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{member_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="30" y="113" width="233" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="false" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[(Pemohon)]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="30" y="41" width="233" height="17"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{txttertanda}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="31" y="0" width="221" height="35"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERSETUJUAN PINJAMAN]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="402" splitType="Stretch">
+			<staticText>
+				<reportElement x="31" y="0" width="221" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Disetujui Pinjaman Kepada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="20" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[No. Anggota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="37" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[N a m a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="37" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="20" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="20" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{member_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="37" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{member_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="71" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_jabatan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="71" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="54" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Departemen]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="54" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_departemen}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="71" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jabatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="54" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="105" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{masa_kerja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="105" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="88" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Status Pegawai]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="88" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sts_pegawai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="105" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Masa Kerja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="88" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="122" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="122" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="122" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="139" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="156" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="156" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Telepon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="156" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="202" width="221" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Dengan ketentuan dibawah ini]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="260" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Bunga Per Tahun]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="260" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="277" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{jangka_waktu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="226" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nama Pinjaman]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="277" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jangka Waktu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="226" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="167" y="243" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{jumlah_pinjaman}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="243" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="277" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="260" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{suku_bunga}+'%']]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="243" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jumlah Pinjaman]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="226" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_pinjaman}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="293" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="361" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="361" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Mulai Bayar Angsuran]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="168" y="361" width="388" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtperiode_pot}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="293" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Angsuran Per Bulan]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="167" y="293" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{jumlah_angsuran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="260" width="58" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hitung_bunga_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="277" width="58" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{satuan_waktu_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="185" width="525" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{reference_number_desc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="168" y="310" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{jumlah_pinjaman}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="310" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Angsuran Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="310" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="168" y="327" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{jumlah_bunga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="327" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Angsuran Bunga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="327" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="168" y="344" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{jumlah_pokok_bunga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="344" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Angsuran Pokok+Bunga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="344" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="168" y="378" width="97" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{jumlah_angsuran}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="378" width="126" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Cara Bayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="378" width="10" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-17" x="0" y="0" width="86" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tanggal Cetak :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-16" x="380" y="17" width="176" height="16"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[form persetujuan]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="dd/MM/yyyy HH.mm.ss" isBlankWhenNull="false">
+				<reportElement key="textField" x="58" y="0" width="100" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="468" y="0" width="88" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["User : "+$P{audituser}+""]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RMKK-01" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="kode_departemen_fr" class="java.lang.String"/>
+	<parameter name="kode_departemen_to" class="java.lang.String"/>
+	<parameter name="no_anggota_fr" class="java.lang.String"/>
+	<parameter name="no_anggota_to" class="java.lang.String"/>
+	<parameter name="aktif_sts" class="java.lang.String"/>
+	<parameter name="member_info_sts" class="java.lang.String"/>
+	<parameter name="simpanan_info_sts" class="java.lang.String"/>
+	<parameter name="audituser" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[CALL sp_ko_anggota_rpt($P{kode_departemen_fr},$P{kode_departemen_to},$P{no_anggota_fr},$P{no_anggota_fr},$P{aktif_sts})]]>
+	</queryString>
+	<field name="txtdocname" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="member_number" class="java.lang.String"/>
+	<field name="member_name" class="java.lang.String"/>
+	<field name="active_sts" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="zipcode" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="faximale" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="pic" class="java.lang.String"/>
+	<field name="employee_sts" class="java.lang.String"/>
+	<field name="employee_number" class="java.lang.String"/>
+	<field name="tanggal_masuk" class="java.sql.Timestamp"/>
+	<field name="sex" class="java.lang.String"/>
+	<field name="religion" class="java.lang.String"/>
+	<field name="department_code" class="java.lang.String"/>
+	<field name="position_code" class="java.lang.String"/>
+	<field name="register_number" class="java.lang.String"/>
+	<field name="register_date" class="java.sql.Timestamp"/>
+	<field name="simpanan_wajib" class="java.math.BigDecimal"/>
+	<field name="simpanan_pokok" class="java.math.BigDecimal"/>
+	<field name="simpanan_sukarela" class="java.math.BigDecimal"/>
+	<field name="simpanan_khusus" class="java.math.BigDecimal"/>
+	<field name="reference_number" class="java.lang.String"/>
+	<field name="last_update" class="java.sql.Timestamp"/>
+	<field name="hp" class="java.lang.String"/>
+	<field name="member_sts" class="java.lang.String"/>
+	<field name="entrydate" class="java.sql.Timestamp"/>
+	<field name="auditdate" class="java.sql.Timestamp"/>
+	<field name="audituser" class="java.lang.String"/>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="addressQ" class="java.lang.String"/>
+	<field name="cityQ" class="java.lang.String"/>
+	<field name="phoneQ" class="java.lang.String"/>
+	<field name="txtHeader" class="java.lang.String"/>
+	<field name="txtType" class="java.lang.String"/>
+	<field name="txtFilter" class="java.lang.String"/>
+	<field name="nama_departemen" class="java.lang.String"/>
+	<field name="nama_jabatan" class="java.lang.String"/>
+	<field name="address_a" class="java.lang.String"/>
+	<field name="city_a" class="java.lang.String"/>
+	<field name="simpanan_wajib_kas" class="java.math.BigDecimal"/>
+	<field name="simpanan_pokok_kas" class="java.math.BigDecimal"/>
+	<field name="simpanan_sukarela_kas" class="java.math.BigDecimal"/>
+	<field name="simpanan_khusus_kas" class="java.math.BigDecimal"/>
+	<variable name="noq" class="java.lang.Number" resetType="Group" resetGroup="tipepinjaman" calculation="Count">
+		<variableExpression><![CDATA[$F{member_number}]]></variableExpression>
+	</variable>
+	<variable name="pencetak" class="java.lang.String">
+		<variableExpression><![CDATA["User : "+$P{audituser}]]></variableExpression>
+	</variable>
+	<variable name="wajib" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_wajib}]]></variableExpression>
+	</variable>
+	<variable name="pokok" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_pokok}]]></variableExpression>
+	</variable>
+	<variable name="sukarela" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_sukarela}]]></variableExpression>
+	</variable>
+	<variable name="khusus" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_khusus}]]></variableExpression>
+	</variable>
+	<variable name="wajib_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_wajib}]]></variableExpression>
+	</variable>
+	<variable name="pokok_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_pokok}]]></variableExpression>
+	</variable>
+	<variable name="sukarela_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_sukarela}]]></variableExpression>
+	</variable>
+	<variable name="khusus_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_khusus}]]></variableExpression>
+	</variable>
+	<variable name="wajib_s" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_wajib_kas}]]></variableExpression>
+	</variable>
+	<variable name="pokok_s" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_pokok_kas}]]></variableExpression>
+	</variable>
+	<variable name="sukarela_s" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_sukarela_kas}]]></variableExpression>
+	</variable>
+	<variable name="khusus_s" class="java.lang.Double" resetType="Group" resetGroup="tipepinjaman" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_khusus_kas}]]></variableExpression>
+	</variable>
+	<variable name="wajib_s_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_wajib_kas}]]></variableExpression>
+	</variable>
+	<variable name="pokok_s_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_pokok_kas}]]></variableExpression>
+	</variable>
+	<variable name="sukarela_s_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_sukarela_kas}]]></variableExpression>
+	</variable>
+	<variable name="khusus_s_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{simpanan_khusus_kas}]]></variableExpression>
+	</variable>
+	<group name="tipepinjaman">
+		<groupExpression><![CDATA[$F{department_code}]]></groupExpression>
+		<groupHeader>
+			<band height="17">
+				<staticText>
+					<reportElement x="0" y="0" width="82" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Departemen]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="82" y="0" width="193" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_departemen}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="2">
+				<staticText>
+					<reportElement x="0" y="1" width="556" height="1"/>
+					<box>
+						<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+			<band height="19">
+				<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="263" y="4" width="50" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{khusus}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="110" y="4" width="51" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{wajib}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="492" y="4" width="64" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{khusus_s}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="161" y="4" width="51" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{pokok}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="428" y="4" width="64" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sukarela_s}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="212" y="4" width="51" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{sukarela}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="372" y="4" width="56" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{pokok_s}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="313" y="4" width="59" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{wajib_s}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="4" width="110" height="15">
+						<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Sub.Total]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="72" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="280" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="19" width="280" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{addressQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="33" width="280" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cityQ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="47" width="280" height="15"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneQ}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="316" y="0" width="239" height="33"/>
+				<box>
+					<pen lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtHeader}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="32" width="239" height="15"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="316" y="46" width="239" height="15"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtFilter}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="45" width="51" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Wajib]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="0" width="85" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[No.Anggota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="228" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[N a m a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="0" width="39" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Aktif]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="0" width="178" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Jabatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="15" width="133" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Kota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="471" y="15" width="84" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Propinsi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="15" width="228" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="30" width="98" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Telpon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="30" width="120" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="30" width="51" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[PNS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="30" width="71" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Tgl.Masuk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="30" width="106" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[NIK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="45" width="51" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Sukarela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="45" width="51" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="25" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="45" width="51" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Khusus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="110" height="15">
+					<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="45" width="110" height="15">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Potongan/Simpanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="45" width="59" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Wajib]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="492" y="45" width="64" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Khusus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="45" width="56" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="45" width="64" height="15" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Sukarela]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="25" y="0" width="85" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{member_number}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="0" width="228" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{member_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="0" y="0" width="25" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Number"><![CDATA[$V{noq}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="338" y="0" width="178" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_jabatan}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="516" y="0" width="39" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{active_sts}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="36">
+			<printWhenExpression><![CDATA[($P{member_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="0" width="228" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address_a}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="338" y="0" width="133" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{city_a}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="471" y="0" width="84" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="15" width="51" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{employee_sts}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="161" y="15" width="106" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{employee_number}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="267" y="15" width="71" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tanggal_masuk}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="338" y="15" width="98" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="436" y="15" width="119" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="263" y="0" width="50" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_khusus}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="212" y="0" width="51" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_sukarela}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="161" y="0" width="51" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_pokok}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="110" y="0" width="51" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_wajib}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="313" y="0" width="59" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_wajib_kas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="372" y="0" width="56" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_pokok_kas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="428" y="0" width="64" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_sukarela_kas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="492" y="0" width="64" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{simpanan_khusus_kas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="436" y="5" width="80" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="516" y="5" width="40" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="275" y="5" width="161" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="205" y="5" width="70" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Tgl. Cetak :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="5" width="205" height="15"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{pencetak}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="436" y="20" width="119" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{txtdocname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="16" splitType="Stretch">
+			<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="372" y="1" width="56" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{pokok_s_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="161" y="1" width="51" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{pokok_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="110" y="1" width="51" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{wajib_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="212" y="1" width="51" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sukarela_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="492" y="1" width="64" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{khusus_s_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="313" y="1" width="59" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{wajib_s_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="263" y="1" width="50" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{khusus_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="1" width="110" height="15">
+					<printWhenExpression><![CDATA[($P{simpanan_info_sts}.equals( "Y" ) ? true : false )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Grand.Total]]></text>
+			</staticText>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="428" y="1" width="64" height="15"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{sukarela_s_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

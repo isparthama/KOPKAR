@@ -1,0 +1,30 @@
+
+CREATE PROCEDURE sp_template_get (in
+    sKEY  VARCHAR(5) , sget int(1))
+BEGIN
+		if sget=0 then
+			SELECT 	*
+			FROM template where KEY=sKEY order by KEY asc LIMIT 1;
+		end if;
+
+		IF sget=1 THEN
+			SELECT 	*
+			FROM template ORDER BY KEY ASC LIMIT 1;
+		END IF;
+
+		IF sget=2 THEN
+			SELECT 	*
+			FROM template WHERE KEY<sKEY ORDER BY KEY desc LIMIT 1;
+		END IF;
+
+		IF sget=3 THEN
+			SELECT 	*
+			FROM template WHERE KEY>sKEY ORDER BY KEY ASC LIMIT 1;
+		END IF;
+
+		IF sget=4 THEN
+			SELECT 	*
+			FROM template ORDER BY KEY desc LIMIT 1;
+		END IF;
+
+    END

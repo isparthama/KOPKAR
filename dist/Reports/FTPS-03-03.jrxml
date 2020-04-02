@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Struk" language="groovy" pageWidth="300" pageHeight="380" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="document_number" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[CALL sp_ar_pos_sales_get_struk_2($P{document_number})]]>
+	</queryString>
+	<field name="docentry" class="java.lang.Integer"/>
+	<field name="document_number" class="java.lang.String"/>
+	<field name="document_status" class="java.lang.String"/>
+	<field name="complete_status" class="java.lang.String"/>
+	<field name="document_date" class="java.sql.Timestamp"/>
+	<field name="document_duedate" class="java.sql.Timestamp"/>
+	<field name="customer_code" class="java.lang.String"/>
+	<field name="reference_number" class="java.lang.String"/>
+	<field name="term_code" class="java.lang.String"/>
+	<field name="discount_code" class="java.lang.String"/>
+	<field name="price_code" class="java.lang.String"/>
+	<field name="warehouse_code" class="java.lang.String"/>
+	<field name="salesman_code" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="dscription" class="java.lang.String"/>
+	<field name="total_bfr_discount" class="java.lang.Double"/>
+	<field name="total_discount" class="java.lang.Double"/>
+	<field name="total_aft_discount" class="java.lang.Double"/>
+	<field name="payment_salary_status" class="java.lang.String"/>
+	<field name="payment_discount" class="java.lang.Double"/>
+	<field name="payment_voucher" class="java.lang.Double"/>
+	<field name="payment_cash" class="java.lang.Double"/>
+	<field name="payment_salary" class="java.lang.Double"/>
+	<field name="payment_credit_card" class="java.lang.Double"/>
+	<field name="payment_debit_card" class="java.lang.Double"/>
+	<field name="total_net_sales" class="java.lang.Double"/>
+	<field name="payment_receipt" class="java.lang.Double"/>
+	<field name="voucher_name" class="java.lang.String"/>
+	<field name="credit_card_name" class="java.lang.String"/>
+	<field name="credit_card_number" class="java.lang.String"/>
+	<field name="debit_card_name" class="java.lang.String"/>
+	<field name="debit_card_number" class="java.lang.String"/>
+	<field name="counter_number" class="java.lang.String"/>
+	<field name="chasier_code" class="java.lang.String"/>
+	<field name="close_status" class="java.lang.String"/>
+	<field name="close_number" class="java.lang.Integer"/>
+	<field name="close_date" class="java.sql.Timestamp"/>
+	<field name="close_user" class="java.lang.String"/>
+	<field name="entrydate" class="java.sql.Timestamp"/>
+	<field name="auditdate" class="java.sql.Timestamp"/>
+	<field name="objtype" class="java.lang.Integer"/>
+	<field name="audituser" class="java.lang.String"/>
+	<field name="monthly_sts" class="java.lang.String"/>
+	<field name="monthly_no" class="java.lang.Integer"/>
+	<field name="invoice_sts" class="java.lang.String"/>
+	<field name="process_sts" class="java.lang.String"/>
+	<field name="process_date" class="java.sql.Timestamp"/>
+	<field name="process_user" class="java.lang.String"/>
+	<field name="dayseqno" class="java.lang.Integer"/>
+	<field name="reffno_pos_return" class="java.lang.String"/>
+	<field name="payment_pos_return" class="java.lang.Double"/>
+	<field name="jumlah_tempo_angsuran" class="java.lang.Integer"/>
+	<field name="customer_name" class="java.lang.String"/>
+	<field name="product_code" class="java.lang.String"/>
+	<field name="product_short_name" class="java.lang.String"/>
+	<field name="quantity" class="java.math.BigDecimal"/>
+	<field name="uom_code" class="java.lang.String"/>
+	<field name="price" class="java.math.BigDecimal"/>
+	<field name="price2" class="java.lang.String"/>
+	<field name="total_gross" class="java.math.BigDecimal"/>
+	<field name="discount_amount" class="java.math.BigDecimal"/>
+	<field name="total_after_discount" class="java.math.BigDecimal"/>
+	<field name="paymentku" class="java.lang.Double"/>
+	<field name="kembaliku" class="java.lang.Double"/>
+	<field name="bayarku" class="java.lang.String"/>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="telp" class="java.lang.String"/>
+	<field name="txtstruk" class="java.lang.String"/>
+	<field name="member_number" class="java.lang.String"/>
+	<field name="member_name" class="java.lang.String"/>
+	<field name="member_nameQ" class="java.lang.String"/>
+	<field name="jumlah_tempo_angsuran_desc" class="java.lang.String"/>
+	<field name="tanda" class="java.lang.String"/>
+	<field name="tandapotongan" class="java.lang.String"/>
+	<variable name="nurt" class="java.lang.Number" resetType="Group" resetGroup="document_number" calculation="Count">
+		<variableExpression><![CDATA[$F{document_number}]]></variableExpression>
+	</variable>
+	<variable name="bayarku" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{payment_cash}+$F{payment_salary}]]></variableExpression>
+	</variable>
+	<group name="document_number">
+		<groupExpression><![CDATA[$F{docentry}]]></groupExpression>
+		<groupFooter>
+			<band height="11">
+				<textField pattern="#,##0">
+					<reportElement x="145" y="0" width="32" height="11"/>
+					<box>
+						<pen lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Solid"/>
+						<leftPen lineStyle="Dashed"/>
+						<bottomPen lineStyle="Dashed"/>
+						<rightPen lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{total_aft_discount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="21" height="11"/>
+					<box>
+						<pen lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Solid"/>
+						<leftPen lineStyle="Dashed"/>
+						<bottomPen lineStyle="Dashed"/>
+						<rightPen lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Kasir :]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="21" y="0" width="77" height="11"/>
+					<box>
+						<pen lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Solid"/>
+						<leftPen lineStyle="Dashed"/>
+						<bottomPen lineStyle="Dashed"/>
+						<rightPen lineStyle="Dashed"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{chasier_code}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="98" y="0" width="47" height="11"/>
+					<box>
+						<pen lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Solid"/>
+						<leftPen lineStyle="Dashed"/>
+						<bottomPen lineStyle="Dashed"/>
+						<rightPen lineStyle="Dashed"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Sub.Total : ]]></text>
+				</staticText>
+			</band>
+			<band height="11">
+				<printWhenExpression><![CDATA[($F{payment_discount}==0 ? false : true )]]></printWhenExpression>
+				<textField pattern="#,##0">
+					<reportElement x="145" y="0" width="32" height="11"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{payment_discount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="145" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Potongan Faktur : ]]></text>
+				</staticText>
+			</band>
+			<band height="11">
+				<printWhenExpression><![CDATA[( $F{payment_voucher}==0 ? false : true )]]></printWhenExpression>
+				<staticText>
+					<reportElement x="0" y="0" width="145" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Potongan Voucher : ]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="145" y="0" width="32" height="11"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{payment_voucher}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="11">
+				<printWhenExpression><![CDATA[($F{total_aft_discount}==$F{total_net_sales}? false :  true )]]></printWhenExpression>
+				<textField pattern="#,##0">
+					<reportElement x="145" y="0" width="32" height="11"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{total_net_sales}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="-1" y="0" width="146" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Nilai Bersih : ]]></text>
+				</staticText>
+			</band>
+			<band height="12">
+				<printWhenExpression><![CDATA[($F{payment_credit_card}==0 ? false : true )]]></printWhenExpression>
+				<textField pattern="#,##0">
+					<reportElement x="145" y="0" width="32" height="11"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{payment_credit_card}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="-1" y="0" width="146" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Credit Card : ]]></text>
+				</staticText>
+			</band>
+			<band height="11">
+				<printWhenExpression><![CDATA[( $F{payment_debit_card}==0 ? false : true )]]></printWhenExpression>
+				<textField pattern="#,##0">
+					<reportElement x="145" y="0" width="32" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{payment_debit_card}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="-1" y="0" width="146" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Debit Card : ]]></text>
+				</staticText>
+			</band>
+			<band height="53">
+				<textField pattern="#,##0">
+					<reportElement x="145" y="1" width="32" height="11"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{bayarku}]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement x="98" y="1" width="47" height="11"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{bayarku}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement x="145" y="11" width="32" height="11"/>
+					<box>
+						<pen lineColor="#CCCCCC"/>
+						<topPen lineColor="#CCCCCC"/>
+						<leftPen lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+						<rightPen lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{payment_receipt}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="98" y="11" width="47" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Bayar : ]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="145" y="21" width="32" height="11"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{kembaliku}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="98" y="21" width="47" height="11"/>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Kembali : ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="1" width="98" height="11">
+						<printWhenExpression><![CDATA[($F{member_number}.equals( null ) ? false : true )]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Pelanggan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="11" width="36" height="11">
+						<printWhenExpression><![CDATA[($F{member_number}.equals( null ) ? false : true )]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[No.Angg]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="21" width="36" height="11">
+						<printWhenExpression><![CDATA[($F{member_number}.equals( null ) ? false : true )]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Nama]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="36" y="11" width="62" height="11">
+						<printWhenExpression><![CDATA[($F{member_number}.equals( null ) ? false : true )]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{member_number}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="36" y="21" width="62" height="11">
+						<printWhenExpression><![CDATA[($F{member_number}.equals( null ) ? false : true )]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{member_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="31" width="36" height="11">
+						<printWhenExpression><![CDATA[($F{member_number}.equals( null ) ? false : true )]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineColor="#999999"/>
+						<topPen lineColor="#999999"/>
+						<leftPen lineColor="#999999"/>
+						<bottomPen lineWidth="0.0" lineColor="#999999"/>
+						<rightPen lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<text><![CDATA[Tempo ]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="36" y="31" width="62" height="11">
+						<printWhenExpression><![CDATA[($F{member_number}.equals( null ) ? false : true )]]></printWhenExpression>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{jumlah_tempo_angsuran_desc}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="-1" y="42" width="178" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{txtstruk}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="177" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="9" width="177" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="18" width="177" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="27" width="177" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{telp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="13" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:MM:DD">
+				<reportElement x="87" y="0" width="90" height="10"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#999999"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{document_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="87" height="10"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#999999"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#666666"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{document_number}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="98" y="0" width="20" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="118" y="0" width="27" height="11">
+					<printWhenExpression><![CDATA[($F{tanda}.equals( "1" )? true : false )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="145" y="0" width="32" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{total_after_discount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="98" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_short_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
